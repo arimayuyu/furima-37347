@@ -21,7 +21,7 @@
 ## items テーブル
 
 | Column                | Type       | Options           |
-| --------------------- | ---------- | ----------------- |
+  | --------------------- | ---------- | ----------------- |
 | name                  | string     | null: false       |
 | description           | text       | null: false       |
 | detail_id             | integer    | null: false       |
@@ -29,7 +29,7 @@
 | selling_price_id      | integer    | null: false       |
 | category_id           | integer    | null: false       |
 | prefecture_id         | integer    | null: false       |
-| value                 | integer    | null: false       |
+| worth                 | integer    | null: false       |
 | user                  | references | foreign_key :true |
 
 ### Association
