@@ -1,5 +1,6 @@
 <%= render "shared/header" %>
 <div class='main'>
+
   <div class='title-contents'>
     <h2 class='service-title'>
       人生を変えるフリマアプリ
@@ -15,6 +16,7 @@
       <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
     </div>
   </div>
+
   <div class='select-reason-contents'>
     <h2 class='title'>
       FURIMAが選ばれる3つの理由
@@ -28,7 +30,7 @@
           ですぐに出品
         </h3>
         <p class='reason-list-description'>
-          スマホで入力するだけで簡単に出品できる！
+          スマホで入力するだけで簡単に出品できる!
         </p>
       </li>
       <li class='list'>
@@ -39,7 +41,7 @@
           で使いやすい
         </h3>
         <p class='reason-list-description'>
-          めんどくさい入力は必要なく、検索も購入もスムーズ！
+          めんどくさい入力は必要なく、検索も購入もスムーズ!
         </p>
       </li>
       <li class='list'>
@@ -50,11 +52,12 @@
           <span class='reason-list-blue-text'>業界最安</span>
         </h3>
         <p class='reason-list-description'>
-          10%でお得に出品&購入！
+          10%でお得に出品&購入!
         </p>
       </li>
     </ul>
   </div>
+
   <div class='ad-contents'>
     <h2 class='ad-title'>
       会員数日本一位
@@ -63,7 +66,7 @@
       FURIMAは、フリマアプリで最も人気。
     </p>
     <p class='ad-explain'>
-      出品・購入回数も業界最多です！
+      出品・購入回数も業界最多です!
     </p>
     <p class='ad-explain'>
       ほしかったあの商品に出会えるかもしれません。
@@ -73,6 +76,7 @@
       <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
     </div>
   </div>
+
   <div class='feature-contents'>
     <h2 class='title'>
       FURIMAの特徴
@@ -84,7 +88,7 @@
           簡単に売り買いできる
         </h3>
         <p class='feature-list-description'>
-          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能!
         </p>
       </li>
       <li class='list'>
@@ -107,20 +111,27 @@
       </li>
     </ul>
   </div>
+
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <div class="subtitle" >
       新規投稿商品
     </div>
     <ul class='item-lists'>
+
       <% @items.each do |item| %>
       <li class='list'>
+        <%= link_to item_path(item) do %>
         <div class='item-img-content'>
-          <%= image_tag item.image, class: "item-img" if item.image.attached? %>
+          <%= image_tag item.image, class: "item-img" %>
+
+          <% if item.order.present? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
-          </div>  
+          </div>
+          <% end %>
         </div>
+
         <div class='item-info'>
           <h3 class='item-name'>
             <%= item.name %>
@@ -133,14 +144,17 @@
             </div>
           </div>
         </div>
-    <% end %>
-      <% if @items[0] == nil %>
+        <% end %>
+        </li>
+      <% end %>
+
+      <% if @items.empty? %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
         <div class='item-info'>
           <h3 class='item-name'>
-            商品を出品してね！
+            商品を出品してね!
           </h3>
           <div class='item-price'>
             <span>99999999円<br>(税込み)</span>
@@ -152,7 +166,7 @@
         </div>
         <% end %>
       </li>
-      <% end %>
+      <% end%>
     </ul>
   </div>
 </div>
