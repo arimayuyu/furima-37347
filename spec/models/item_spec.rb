@@ -73,7 +73,7 @@ RSpec.describe Item, type: :model do
     end
 
     it '価格の範囲が、¥100,000,00以上では出品できないこと' do
-      @item.worth = 10, 0000, 0000
+      @item.worth = 10_0000_0000
       @item.valid?
       expect(@item.errors.full_messages).to include('Worth This site is only for under 300 and over 9,999,999')
     end
