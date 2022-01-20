@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   has_one_attached :image
-  has_one :order
+  #has_one :order
   
 
   validates :image, :name, :description, :detail_id, :regarding_delivery_id, :selling_price_id,:category_id, :prefecture_id,:worth, presence: true
