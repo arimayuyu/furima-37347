@@ -4,11 +4,14 @@ RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
   end
+
   describe '商品出品機能' do
+    context '商品出品できる時'
     it '全て正常' do
       expect(@item).to be_valid
     end
 
+    context '商品出品できないとき'
     it 'imageが必須であること' do
       @item.image = nil
       @item.valid?
@@ -70,7 +73,7 @@ RSpec.describe Item, type: :model do
     end
 
     it '価格の範囲が、¥100,000,00以上では出品できないこと' do
-      @item.worth = 10, 0o00, 0o00
+      @item.worth = 10, 0000, 0000
       @item.valid?
       expect(@item.errors.full_messages).to include('Worth This site is only for under 300 and over 9,999,999')
     end
