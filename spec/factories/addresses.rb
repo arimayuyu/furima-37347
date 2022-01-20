@@ -1,5 +1,5 @@
-FactoryBot.define do
-  factory :address do
+#FactoryBot.define do
+  #factory :address do
     
-  end
-end
+  #end
+#end
