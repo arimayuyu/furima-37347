@@ -21,7 +21,7 @@
 ## items テーブル
 
 | Column                | Type       | Options           |
-  | --------------------- | ---------- | ----------------- |
+| --------------------- | ---------- | ----------------- |
 | name                  | string     | null: false       |
 | description           | text       | null: false       |
 | detail_id             | integer    | null: false       |
