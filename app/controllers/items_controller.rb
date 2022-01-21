@@ -26,6 +26,7 @@ class ItemsController < ApplicationController
   #end
 
   #def edit
+    #@item = Item.find(params[:id])
   #end
 
   #def update
@@ -36,8 +37,9 @@ class ItemsController < ApplicationController
     #end
   #end
 
-  #def show
-  #end
+  def show
+    @item = Item.find(params[:id])
+  end
 
  
   private
