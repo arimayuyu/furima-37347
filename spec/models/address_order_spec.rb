@@ -1,4 +1,4 @@
-¸require 'rails_helper'
+require 'rails_helper'
 RSpec.describe :address_order, type: :model do
   before do
     user = FactoryBot.create(:user)
@@ -60,6 +60,11 @@ RSpec.describe :address_order, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Phone number is invalid")
       end    
+      it "電話番号が9桁以下では登録できない" do
+        @item.phone_number = "123456789"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Phone number is invalid")
+      end
       it '購入者が空だと購入できない' do
         @item.user_id = nil        
         @item.valid?
@@ -88,4 +93,3 @@ RSpec.describe :address_order, type: :model do
     end
   end
 end
-
