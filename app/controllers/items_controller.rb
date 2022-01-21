@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
-  #before_action :set_item, only: [:edit, :update, :show, :destroy]
-  #before_action :redirect_to_show, only:[:edit, :update, :destroy]  
+  before_action :set_item, only: [:edit, :update, :show]
+  before_action :redirect_to_show, only:[:edit, :update]
 
   def index
     @items = Item.all
@@ -25,20 +25,18 @@ class ItemsController < ApplicationController
     #redirect_to root_path
   #end
 
-  #def edit
-    #@item = Item.find(params[:id])
-  #end
+  def edit
+  end
 
-  #def update
-    #if @item.update(item_params)
-      #redirect_to item_path(@item)
-    #else
-      #render :edit
-    #end
-  #end
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item)
+    else
+      render :edit
+    end
+  end
 
   def show
-    @item = Item.find(params[:id])
   end
 
  
@@ -50,13 +48,13 @@ class ItemsController < ApplicationController
       :category_id, :prefecture_id, :worth ).merge(user_id: current_user.id)
   end
 
-  #def redirect_to_show
-    #return redirect_to root_path if current_user.id != @item.user.id || @item.order!=nil
-  #end
+  def redirect_to_show
+    return redirect_to root_path if current_user.id != @item.user.id
+  end
       
-  #def set_item
-        #@item = Item.find(params[:id])
-  #end
+  def set_item
+        @item = Item.find(params[:id])
+  end
 
   
 end
